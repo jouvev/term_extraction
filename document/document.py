@@ -58,15 +58,22 @@ class Document:
     def getTermes(self):
         """Getter d'attribut termes
         
-        La variable termes correspond à la liste des termes extraits par le 
-        lors de l'appel à la fonction extraction. Il faut donc imparativement
-        faire appel à la fonction extraction avant.
+        La variable termes correspond à la liste des termes extraits par l'extracteur 
+        lors de l'appel à la fonction extraction. Il faut donc impérativement
+        faire appel à la méthode extraction avant de faire appel à ce getter.
         
         Returns
         -------
         list[tuple[str*]]
             Les termes extraits du document
+            
+        Raises
+        ------
+        RuntimeError
+            Ce getter ne peut être appler qu'après avoir appelé la méthode extraction
         """
+        if(self.termes is None):
+            RuntimeError("Ce getter ne peut être appler qu'après avoir appelé la méthode extraction")
         return self.termes
     
     def getNbMot(self):

@@ -3,7 +3,7 @@ from enum import Enum
 import re
 from distutils.util import strtobool
 
-METHODES_COLLECTES = Enum('METHODES_COLLECTES', 'POSTAG NGRAMMES')
+METHODES_EXTRACTION = Enum('METHODES_EXTRACTION', 'POSTAG NGRAMMES')
 METHODES_SCORING = Enum('METHODES_SCORING', 'FREQUENCE TFIDF_STANDARD TFIDF_LOG OKAPI')
 FORMULES_AGREGATION = Enum('FORMULES_AGREGATION', 'MAX SUM MEAN')
 
@@ -16,7 +16,7 @@ class Config:
     stem : bool 
         Si True permet de remplacer les termes par leur stem. 
     
-    methodeCollecte : METHODES_COLLECTES
+    methodeExtraction : METHODES_EXTRACTION
         Si POSTAG permet d'extraire les termes avec du POS tagging anisi avoir 
         des termes plus pertinent.
         Si NGRAMMES recupère les n-grammes de façon simple
@@ -29,7 +29,8 @@ class Config:
         
     seuilNbOccMin : int
         Les termes ne sont pris en compte que s'ils sont présent plus de 
-        seuilNbOccMin
+        seuilNbOccMin. Ce seuil s'applique sur les documents du corpus et non 
+        sur le corpus.
     
     methodeScoring : METHODES_SCORING
         La façon dont laquelle ont attribut un score au termes. Soit juste la 
@@ -79,7 +80,8 @@ class Config:
             Cette erreur est levé quand une valeur de paramètre n'est pas valide
         ValueError
             Cette erreur est levé quand une valeur entiére ou booléen n'est pas
-            valide ou quand un paramètre entré n'existe pas 
+            valide ou quand un paramètre du fichier config n'est pas un paramètre
+            légale.
         """
         #on retire les commentaires
         lignesParams = re.findall('^[^#].*$',txt,flags=re.MULTILINE)
@@ -91,8 +93,8 @@ class Config:
             
             if(param == 'stem'):
                 self.stem = bool(strtobool(valeur))
-            elif(param == 'methodeCollecte'):
-                self.methodeCollecte = METHODES_COLLECTES[valeur]
+            elif(param == 'methodeExtraction'):
+                self.methodeExtraction = METHODES_EXTRACTION[valeur]
             elif(param == 'longueurMin'):
                 self.longueurMin = int(valeur)
             elif(param == 'longueurMax'):
@@ -109,6 +111,9 @@ class Config:
                 self.corpusPath = valeur
             else:
                 raise ValueError(param+" n'est pas un paramètre")
+                
+        if(self.longueurMin>self.longueurMax):
+            raise ValueError('longueurMin doit être supérieur ou égale à longueurMax')
         
     def getStem(self):
         """Getter stem
@@ -120,15 +125,15 @@ class Config:
         """
         return self.stem
     
-    def getMethodeCollecte(self):
-        """Getter methodeCollecte
+    def getMethodeExtraction(self):
+        """Getter methodeExtraction
         
         Returns
         -------
-        Enum METHODES_COLLECTES
+        Enum METHODES_EXTRACTION
             POSTAG | NGRAMMES
         """
-        return self.methodeCollecte
+        return self.methodeExtraction
     
     def getLongueurMin(self):
         """Getter longueurMin
@@ -178,7 +183,7 @@ class Config:
         Enum FORMULES_AGREGATION
            MAX | SUM | MEAN
         """
-        self.formuleAgregation
+        return self.formuleAgregation
         
     def getCValue(self):
         """Getter cValue

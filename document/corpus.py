@@ -99,3 +99,13 @@ class Corpus:
         """
         for doc in self:
             doc.extraction(extracteur)
+            
+    def getCollection(self):
+        """Getter de la collection de document
+            
+        Returns
+        -------
+        dict[int,Document]
+            La collection de document du corpus
+        """
+        return self.collection
