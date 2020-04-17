@@ -95,5 +95,5 @@ class Document:
         extracteur : Extracteur 
             Objet Extracteur traitant le contenu pour extraire les termes
         """
-        self.termes = extracteur.extracte(self.contenu)
+        self.termes = extracteur.extracter(self.contenu)
         

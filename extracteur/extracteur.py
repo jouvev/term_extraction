@@ -45,7 +45,7 @@ class Extracteur:
         with open(PATH_MOTSVIDES,'r',encoding='utf-8') as f:
             self.motsVides = set(f.read().split('\n'))
         
-    def extracte(self,texte):
+    def extracter(self,texte):
         """Méthode d'extraction des termes du texte.
         
         Parameters

@@ -4,8 +4,12 @@ import re
 from distutils.util import strtobool
 
 METHODES_EXTRACTION = Enum('METHODES_EXTRACTION', 'POSTAG NGRAMMES')
-METHODES_SCORING = Enum('METHODES_SCORING', 'FREQUENCE TFIDF_STANDARD TFIDF_LOG OKAPI')
+METHODES_SCORING = Enum('METHODES_SCORING', 'FREQUENCE TFIDF_STANDARD TFIDF_LOG OKAPI CVALUE')
 FORMULES_AGREGATION = Enum('FORMULES_AGREGATION', 'MAX SUM MEAN')
+
+PARAMS_OBLIGATOIRE = ['STEM','METHODEEXTRACTION','LONGUEURMIN','LONGUEURMAX',
+                      'SEUILNBOCCMIN','METHODESCORING','FORMULEAGREGATION',
+                      'CVALUE','CORPUSPATH','OUTPUTPATH']
 
 class Config:
     """
@@ -49,6 +53,9 @@ class Config:
         
     corpusPath : str
         Chemin du fichier corpus
+        
+    outputPath  : str
+        Chemin du fichier de sortie dans lequel on écrira le résultat
     """
     def __init__(self,path):
         """Constructeur de la classe Config 
@@ -81,39 +88,52 @@ class Config:
         ValueError
             Cette erreur est levé quand une valeur entiére ou booléen n'est pas
             valide ou quand un paramètre du fichier config n'est pas un paramètre
-            légale.
+            légale, ou encore lorsque un paramètre n'est pas présent dans le fichier
+            de config.
         """
-        #on retire les commentaires
-        lignesParams = re.findall('^[^#].*$',txt,flags=re.MULTILINE)
+        #On retire les commentaires et les lignes vides
+        lignesParams = re.findall('^[^#\n].*$',txt,flags=re.MULTILINE)
+                                     
+        #Permet de verifié que tout les paramètres ont été entrés
+        dictVerifParams = {param:False for param in PARAMS_OBLIGATOIRE}
         
         #On crée nos paramétres
         for ligne in lignesParams:
             param,valeur = ligne.split('=')
-            param,valeur = param.strip(),valeur.strip()
+            param,valeur = param.strip().upper(),valeur.strip()
             
-            if(param == 'stem'):
+            if(param == 'STEM'):
                 self.stem = bool(strtobool(valeur))
-            elif(param == 'methodeExtraction'):
-                self.methodeExtraction = METHODES_EXTRACTION[valeur]
-            elif(param == 'longueurMin'):
+            elif(param == 'METHODEEXTRACTION'):
+                self.methodeExtraction = METHODES_EXTRACTION[valeur.upper()]
+            elif(param == 'LONGUEURMIN'):
                 self.longueurMin = int(valeur)
-            elif(param == 'longueurMax'):
+            elif(param == 'LONGUEURMAX'):
                 self.longueurMax = int(valeur)
-            elif(param == 'seuilNbOccMin'):
+            elif(param == 'SEUILNBOCCMIN'):
                 self.seuilNbOccMin = int(valeur)
-            elif(param == 'methodeScoring'):
-                self.methodeScoring = METHODES_SCORING[valeur]
-            elif(param == 'formuleAgregation'):
-                self.formuleAgregation = FORMULES_AGREGATION[valeur]
-            elif(param == 'cValue'):
+            elif(param == 'METHODESCORING'):
+                self.methodeScoring = METHODES_SCORING[valeur.upper()]
+            elif(param == 'FORMULEAGREGATION'):
+                self.formuleAgregation = FORMULES_AGREGATION[valeur.upper()]
+            elif(param == 'CVALUE'):
                 self.cValue = bool(strtobool(valeur))
-            elif(param == 'corpusPath'):
+            elif(param == 'CORPUSPATH'):
                 self.corpusPath = valeur
+            elif(param == 'OUTPUTPATH'):
+                self.outputPath = valeur
             else:
                 raise ValueError(param+" n'est pas un paramètre")
-                
+            
+            dictVerifParams[param] = True
+            
+        #On vérifie que tout les paramètres sont présent sinon on léve une exception 
+        for param,present in dictVerifParams.items():
+            if(not present):
+                raise ValueError('Il manque au moins le paramètre suivant dans le fichier de config : '+param)
+        
         if(self.longueurMin>self.longueurMax):
-            raise ValueError('longueurMin doit être supérieur ou égale à longueurMax')
+            raise ValueError('LONGUEURMAX doit être supérieur ou égale à LONGUEURMIN')
         
     def getStem(self):
         """Getter stem
@@ -204,4 +224,14 @@ class Config:
             chemin du fichier corpus
         """
         return self.corpusPath
+    
+    def getOutputPath(self):
+        """Getter outputpath
+        
+        Returns
+        -------
+        str
+            chemin du fichier de sortie
+        """
+        return self.outputPath
     
