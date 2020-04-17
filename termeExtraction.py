@@ -4,7 +4,7 @@ Programme principale pour l'extraction de terme.
 A appeler avec un fichier de config en argument
 """
 import sys
-import os.path
+import os
 import csv
 from config.config import Config,METHODES_EXTRACTION,METHODES_SCORING
 from indexeur.indexeur import Indexeur
@@ -122,16 +122,21 @@ def ecrireCSV(lignes,csvpath):
             csvWriter.writerow([str(i),strTerme,str(score)])
     
 if __name__=='__main__':
+    #on récupére le chemin d'où on appel le script
+    cheminAppel = os.getcwd()+'/'
+    #Pour la suite on se place dans le repértoire qui contient le script
+    os.chdir(os.path.abspath(os.path.dirname( __file__)))
+    
     #récuperation du fichier de config et initialise l'objet Config  
     pathConfig = sys.argv[1]
-    config = Config(pathConfig)
+    config = Config(cheminAppel+pathConfig)
     
     #on récupére l'indexation de référence 
     indRef = recupererIndexeurReference(config) 
     
     #on récupére le corpus à traiter 
     pathCorpus = config.getCorpusPath()
-    corpus = ParserSplit().parse(pathCorpus)
+    corpus = ParserSplit().parse(cheminAppel+pathCorpus)
     
     #on extrait les termes du corpus
     extracteur = recupererExtracteur(config)
@@ -155,4 +160,4 @@ if __name__=='__main__':
     
     #on écrit dans un csv le résultat
     lignes = zip(list(range(1,len(listeTermes)+1)),listeTermes,listeScores)
-    ecrireCSV(lignes,config.getOutputPath())
+    ecrireCSV(lignes,cheminAppel+config.getOutputPath())

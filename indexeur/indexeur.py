@@ -66,6 +66,24 @@ class Indexeur:
             corpus sur lequel on calcule l'index
         """
         return self.corpus
+    
+    def getNbDocTerme(self,terme):
+        """Renvoie le nombre de document contenant le terme passé en paramètre.
+        
+        Parameters
+        ----------
+        terme : tuple[str*]
+            Un terme
+            
+        Returns
+        -------
+        int
+            Nombre de document contenant le terme
+        """
+        if (terme not in self.indexInv.keys()):
+            return  0
+        else:
+            return len(self.indexInv[terme])
 
     def getIDFTerme(self,terme):
         """Calcule l'idf(inverse document frequency) du terme dans l'index
@@ -84,10 +102,7 @@ class Indexeur:
             L'idf du terme 
         """
         N = self.corpus.size()
-        if (terme not in self.indexInv.keys()):
-            n = 0
-        else:
-            n = len(self.indexInv[terme])
+        n = self.getNbDocTerme(terme)
         return math.log((1+N)/(1+n))
     
     def getIDFOkapiTerme(self,terme):
@@ -107,10 +122,7 @@ class Indexeur:
             L'idf du terme pour okapi 
         """
         N = self.corpus.size()
-        if (terme not in self.indexInv.keys()):
-            n = 0
-        else:
-            n = len(self.indexInv[terme])
+        n = self.getNbDocTerme(terme)
         return math.log((N-n+0.5)/(0.5+n))
 
     def calculIndex(self):
