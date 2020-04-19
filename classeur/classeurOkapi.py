@@ -66,5 +66,6 @@ class ClasseurOkapi(Classeur):
         if(self.config.getCValue()):
             cValue = ClasseurCValue(self.config)
             dictTermesOkapi = cValue.scoreAvecCValue(indexCorpus,dictTermesOkapi)
+            self.normaliserScoreClassement(dictTermesOkapi)
             
         return dictTermesOkapi

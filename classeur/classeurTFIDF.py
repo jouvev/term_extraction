@@ -72,5 +72,6 @@ class ClasseurTFIDF(Classeur):
         if(self.config.getCValue()):
             cValue = ClasseurCValue(self.config)
             dictTermesTFIDF = cValue.scoreAvecCValue(indexCorpus,dictTermesTFIDF)
+            self.normaliserScoreClassement(dictTermesTFIDF)
             
         return dictTermesTFIDF

@@ -25,7 +25,7 @@ class ExtracteurSpacy(Extracteur):
         super().__init__(config)
         self.nlp = spacy.load("fr_core_news_sm")
     
-    def extracter(self,texte):
+    def extraire(self,texte):
         """Méthode d'extraction des termes du texte.
         
         Parameters

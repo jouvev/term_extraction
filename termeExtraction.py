@@ -9,6 +9,7 @@ import csv
 from config.config import Config,METHODES_EXTRACTION,METHODES_SCORING
 from indexeur.indexeur import Indexeur
 from extracteur.extracteurSpacy import ExtracteurSpacy
+from extracteur.extracteurNGrammes import ExtracteurNGrammes
 from parserCorpus.parserArticle import ParserArticle
 from parserCorpus.parserSplit import ParserSplit
 from classeur.classeurTFIDF import ClasseurTFIDF
@@ -73,6 +74,9 @@ def recupererExtracteur(config):
     #on crée l'extracteur correspondant au fichier de config
     if(config.getMethodeExtraction() == METHODES_EXTRACTION.POSTAG):
         return ExtracteurSpacy(config)
+    
+    if(config.getMethodeExtraction() == METHODES_EXTRACTION.NGRAMMES):
+        return ExtracteurNGrammes(config)
         
 def recupererClasseur(config,indexCorpusRef):
     """Permet de récupérer le classeur correspondant à la configuration

@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import string
-from nltk.stem import SnowballStemmer
 from collections import Counter
+from nltk.stem import SnowballStemmer
+from nltk.tokenize import word_tokenize
 
 #Chemin vers un fichier qui contient un ensemble de mots vides, un mot par ligne
 PATH_MOTSVIDES = 'ressources/stopwords.fr'
@@ -45,7 +46,7 @@ class Extracteur:
         with open(PATH_MOTSVIDES,'r',encoding='utf-8') as f:
             self.motsVides = set(f.read().split('\n'))
         
-    def extracter(self,texte):
+    def extraire(self,texte):
         """Méthode d'extraction des termes du texte.
         
         Parameters
@@ -257,4 +258,31 @@ class Extracteur:
             listeTermeFinale = self.retireTermePeuFrequent(listeTermeFinale)
         
         return self.termeBonneLongueur(listeTermeFinale)
+    
+    def segmenter(self,texte):
+        """Sépare le texte en liste de mots.
         
+        Parameters
+        ----------
+        texte : str
+            Le texte qu'on souhaite segmenter.
+            
+        Returns
+        -------
+        list[str]
+            Liste des mots du texte
+        """
+        #on sépare les mots
+        txtSplit = word_tokenize(texte,'French')
+        
+        #on sépare les mots qui ont une aposthrophe car word_tokenize ne le fait pas 
+        txtSplitTmp = []
+        for mot in txtSplit:
+            if("'" not in mot):
+                txtSplitTmp.append(mot)
+            else:
+                mots = mot.split("'")
+                txtSplitTmp.append(mots[0]+"'")
+                txtSplitTmp.append(mots[1])
+        
+        return txtSplitTmp
