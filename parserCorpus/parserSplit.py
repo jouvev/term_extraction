@@ -7,11 +7,11 @@ from parserCorpus.parserCorpus import ParserCorpus
 class ParserSplit(ParserCorpus):
     """
     Objet qui permet de construire un corpus, les documents dans le fichier .txt
-    sont délimités par "##END##"
+    doivent être séparés par "##END##"
     """
     def parse(self,path):
         """Methode qui permet de construire un corpus à partir d'un .txt.
-        Ici le motif "##END##" doit être une ligne entre deux document dans le
+        Ici le motif "##END##" doit être une ligne entre deux documents dans le
         .txt. Si aucun motif "##END##" n'est présent alors le corpus sera composé
         d'un seul document de contenu tout le .txt.
         
@@ -26,6 +26,11 @@ class ParserSplit(ParserCorpus):
             Si le chemin vers le fichier n'existe pas
         PermissionError
             Si les permissions du fichier ne permettent pas l'ouverture
+            
+        Returns
+        -------
+        Corpus
+            Le corpus extrait du fichier passer en argument
         """
         corpusRes = Corpus()
 

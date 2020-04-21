@@ -41,8 +41,7 @@ class Corpus:
         """
         iddoc = doc.getId()
         if(iddoc in self.collection):
-            raise KeyError("Le corpus contient déjà un document avec le même id : "\
-                           +str(iddoc))
+            raise KeyError("Le corpus contient déjà un document avec le même id : "+str(iddoc))
         self.nbMoyenMot = None #invalide le nombre de mots moyen qui change
         self.collection[iddoc]=doc
 

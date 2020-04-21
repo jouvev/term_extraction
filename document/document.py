@@ -13,8 +13,8 @@ class Document:
     contenu : str
         Le contenu du document
     termes : list[tuple(str*)]
-        Par défaut à None. Après appel à la focntion extraction contient la 
-        liste des termes extraits à partir du contenu.
+        Par défaut à None. Après appel de la méthode extraction contient la 
+        liste des termes extrait à partir du contenu.
     nbMot : int 
         Nombre de mots dans le document
     """

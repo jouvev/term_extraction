@@ -36,7 +36,7 @@ class ExtracteurSpacy(Extracteur):
         Returns
         -------
         list[tuple[str*]]
-            liste de termes propre correspondant à la configuration.
+            liste de termes correspondant à la configuration.
         """
         #on met tout en miniscule et on remplace les sauts de lignes qui pose problème à spacy
         txt = texte.replace('\n',' ').lower()
@@ -51,7 +51,7 @@ class ExtracteurSpacy(Extracteur):
         
         #On recupère l'ensemble des noms dans le texte qui donnerons les termes par la suite.
         #On fait une première sélection en retirant les noms dépendant d'autre nom
-        #sauf si c'est lui même ce qui signifie que ce serait la racine.
+        #sauf si c'est lui même ce qui signifie qu'il serait la racine.
         noms = set([t for t in txtTag if t.pos_=='NOUN' and  (t.head==t or t.head.pos_!='NOUN')])
         
         #Deuxieme selection

@@ -6,9 +6,6 @@ from classeur.outilsClasseur import normaliserIndex, inverserIndex
 class ClasseurOkapi(Classeur):
     """Cette classe attribue comme score aux termes, leur score okapi 
     d'aprés un corpus de référence et selon l'agrégation choisi dans la config.
-    
-    formule okapi:
-        
     """
     def __init__(self,config,indexCorpusRef):
         """Constructeur de la classe ClasseurOkapi

@@ -6,11 +6,6 @@ class ClasseurCValue(Classeur):
     """Cette classe attribue comme score aux termes, leur cValue. Ici le 
     paramètre d'agrégation n'a pas d'influence. La C-value ce calcule seulement 
     sur un document. Donc ici on fusionne les documents avant le calcul.
-    
-    formule de la C-value : 
-        -si le terme n'est pas imbriqué dans d'autre :
-             
-        -sinon
     """
     def __init__(self,config):
         """Constructeur de la classe ClasseurCValue

@@ -18,7 +18,7 @@ class Extracteur:
         
     dictStemTerme : dict[tuple[str*],dict[tuple[str*],int]]
         Lorsque stem est à True dans la config ce dictionnaire permet de 
-        retrouver la forme de surface la plus fréquente pour le stem
+        retrouver la forme de surface la plus fréquente pour un stem.
         
     stemmer : SnowballStemmer
         Objet permettant de faire du stemming
@@ -42,7 +42,7 @@ class Extracteur:
             self.dictStemTerme = dict()
             self.stemmer = SnowballStemmer('french')
         
-        #on charge un ensemble de mots vides
+        #on charge l'ensemble de mots vides
         with open(PATH_MOTSVIDES,'r',encoding='utf-8') as f:
             self.motsVides = set(f.read().split('\n'))
         
@@ -80,7 +80,7 @@ class Extracteur:
         ------
         RuntimeError
             Si la configuration ne permet pas le stemming, cette méthode ne peut
-            être appelé'
+            être appelé
         """
         if(self.config.getStem()):
             RuntimeError('La configuration ne permet pas le stemming, cette méthode ne peut être appelé')
@@ -135,7 +135,7 @@ class Extracteur:
             if (stem not in self.dictStemTerme):
                 raise KeyError("Le stem : \""+' '.join(stem)+"\" n'a pas de terme associé dans le dictionnaire")
             
-            #recupération de la forme la plus fréquente 
+            #récupération de la forme la plus fréquente 
             occMax = -1
             for terme,occ in self.dictStemTerme[stem].items():
                 if(occ>occMax):

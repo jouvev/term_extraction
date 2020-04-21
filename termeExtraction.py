@@ -23,8 +23,8 @@ def recupererIndexeurReference(config):
     """Permet de récupérer l'indexeur du corpus de référence correspondant à 
     la configuration.
     
-    Comme le traitement est long si l'indexeur a déjà été créé il est chargé, 
-    sinon il est calculé puis enregistré pour les prochaines fois.  
+    Comme le traitement est long, si l'indexeur a déjà été créé il est chargé, 
+    sinon il est calculé puis enregistré pour les prochaines fois.
     
     Parameters
     ----------
@@ -36,13 +36,14 @@ def recupererIndexeurReference(config):
     Indexeur
         L'indexeur du corpus de référence correspondant à la configuration
     """
-    pathInd= 'ressources/indRef_'+str(config.getMethodeExtraction().value)+ \
+    pathInd = 'ressources/indRef_'+str(config.getMethodeExtraction().value)+ \
             '_'+str(config.getStem())+'_'+str(config.getLongueurMin())+'_'+\
             str(config.getLongueurMax())+'.pkl'
     
-    #si le fichier existe sinon on le créer
+    #si le fichier existe
     if(os.path.exists(pathInd)):
         return Indexeur.charger(pathInd)
+    #sinon on le créer
     else:
         #récupére le corpus de référence
         corpusRef = ParserArticle().parse(PATH_CORPUSREF)
@@ -126,19 +127,19 @@ def ecrireCSV(lignes,csvpath):
             csvWriter.writerow([str(i),strTerme,str(score)])
     
 if __name__=='__main__':
-    #on récupére le chemin d'où on appel le script
+    #on récupère le chemin d'où on appelle le script
     cheminAppel = os.getcwd()+'/'
     #Pour la suite on se place dans le repértoire qui contient le script
     os.chdir(os.path.abspath(os.path.dirname( __file__)))
     
-    #récuperation du fichier de config et initialise l'objet Config  
+    #récupération du fichier de config et initialise l'objet Config  
     pathConfig = sys.argv[1]
     config = Config(cheminAppel+pathConfig)
     
-    #on récupére l'indexation de référence 
+    #on récupère l'indexation de référence 
     indRef = recupererIndexeurReference(config) 
     
-    #on récupére le corpus à traiter 
+    #on récupère le corpus à traiter 
     pathCorpus = config.getCorpusPath()
     corpus = ParserSplit().parse(cheminAppel+pathCorpus)
     
@@ -151,7 +152,7 @@ if __name__=='__main__':
     
     #on récupére le classeur pour classer les termes du corpus
     classeur = recupererClasseur(config,indRef)
-    #on récupére les termes classer avec leur score
+    #on récupére les termes classés avec leur score
     listeTermesTrie = classeur.classer(indexCorpus)
     
     #on découpe la liste des termes et scores

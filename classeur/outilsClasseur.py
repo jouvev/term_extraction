@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Dans ce module on trouve des focntions outils pour les classe Classeur
+Dans ce module on trouve des focntions outils pour les classes Classeur
 """
 def normaliserIndex(index):
     """Normalise l'index passer en argument. 
@@ -19,12 +19,13 @@ def normaliserIndex(index):
             index[iddoc][terme] = (index[iddoc][terme]-scoremin) / (scoremax-scoremin)
 
 def inverserIndex(index):
-    """Renvoie un index passer en argument, inverser. 
+    """Renvoie l'index inverse de l'index passé en argument. 
     
     Parameters
     ----------
     index : dict[int,dict[tuple[str*],float]]
         Dictionnaire du score tfidf pour un terme par document
+    
     Returns
     -------
     dict[tuple[str*],dict[int,float]]

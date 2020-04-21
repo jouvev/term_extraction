@@ -6,7 +6,7 @@ from collections import Counter
 class Indexeur:
     """
     Objet permettant l'indexation des termes d'un corpus et des fonctionnalités
-    d'accées au valeur de l'index et même de calcul comme l'idf d'un terme
+    d'accées au valeur de l'index et de calcul comme l'idf d'un terme dans le corpus.
     
     Attributes
     ----------
@@ -89,12 +89,13 @@ class Indexeur:
         """Calcule l'idf(inverse document frequency) du terme dans l'index
         
         fomrmule de l'idf log((1+N)/(1+n)), où N est le nombre de document
-        du corpus et n est le nombre de documents dans lesquels apparait le terme
-        passé en argument
+        du corpus et n est le nombre de documents dans lesquels apparaissent 
+        le terme passé en argument.
         
         Parameters
         ----------
         terme : tuple[str*]
+            Le terme dont on veut l'idf.
         
         Returns
         -------
@@ -126,7 +127,7 @@ class Indexeur:
         return math.log((N-n+0.5)/(0.5+n))
 
     def calculIndex(self):
-        """Calcule et initialise les attribut index et indexInv
+        """Calcule et initialise les attributs index et indexInv
         
         Appeler lors de la construction de l'objet
         """

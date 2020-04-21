@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import string
-from nltk import ngrams
 from extracteur.extracteur import Extracteur
 
  
@@ -8,14 +7,14 @@ class ExtracteurNGrammes(Extracteur):
     """
     Objet permettant d'extraire des termes depuis du texte.
     
-    Attributes
-    ----------
-    nlp : spacy
-        Objet permettant de faire le POS tagging
+    Cette objet extrait les ngrammes d'un document. Un ngramme est extrait seulement
+    s'il est entouré de mots vides ou de ponctuations. On fait l'hypothése que si
+    un mot est directement à coté d'un autre mot, alors ces mots auraient du sens 
+    ensemble.
     """
     
     def __init__(self,config):
-        """Constructeur de la classe ExtracteurSpacy
+        """Constructeur de la classe ExtracteurNGrammes
         
         Parameters
         ----------
@@ -36,7 +35,7 @@ class ExtracteurNGrammes(Extracteur):
         Returns
         -------
         list[tuple[str*]]
-            liste de termes propre correspondant à la configuration.
+            liste de termes correspondant à la configuration.
         """
         #on met tout en miniscule
         txt = texte.lower()

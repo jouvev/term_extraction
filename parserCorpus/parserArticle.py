@@ -7,7 +7,7 @@ from parserCorpus.parserCorpus import ParserCorpus
 class ParserArticle(ParserCorpus):
     """
     Objet principalement fait pour pouvoir analyser le corpus de réference 
-    (wiki.fr)
+    (corpus_ref.fr)
     """
     def parse(self,path):
         """Methode qui analyse un fichier .txt est renvoie un corpus
