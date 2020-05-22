@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module extractionTerme</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>extractionTerme</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br></font></td></tr></table>
+    <p><tt>#&nbsp;-*-&nbsp;coding:&nbsp;utf-8&nbsp;-*-</tt></p>
+<p>
+  <tt>Programme&nbsp;pour&nbsp;l'extraction&nbsp;de&nbsp;termes.<br>
+    À&nbsp;appeler&nbsp;avec&nbsp;un&nbsp;fichier&nbsp;de&nbsp;configurations&nbsp;(voir page précédente)
+  </tt>
+</p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="csv.html">csv</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-ecrireCSV"><strong>ecrireCSV</strong></a>(lignes, csvpath)</dt><dd><tt>Ecrit&nbsp;dans&nbsp;un&nbsp;fichier&nbsp;csv&nbsp;le&nbsp;classement&nbsp;des&nbsp;termes&nbsp;obtenus&nbsp;avant.<br>
+Noms&nbsp;des&nbsp;champs&nbsp;du&nbsp;csv&nbsp;-&gt;&nbsp;rang;terme;score.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+lignes&nbsp;:&nbsp;zip[list[int],list[tuple(str*)],list[float]]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Zip&nbsp;du&nbsp;rang,&nbsp;du&nbsp;terme,&nbsp;de&nbsp;son&nbsp;score.&nbsp;Ce&nbsp;qui&nbsp;va&nbsp;correspondre&nbsp;à&nbsp;une<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ligne&nbsp;du&nbsp;csv&nbsp;rang;terme;score.</tt></dd></dl>
+ <dl><dt><a name="-recupererClasseur"><strong>recupererClasseur</strong></a>(config, indexCorpusRef)</dt><dd><tt>Permet&nbsp;de&nbsp;récupérer&nbsp;le&nbsp;classeur&nbsp;correspondant&nbsp;à&nbsp;la&nbsp;configuration<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+config&nbsp;:&nbsp;Config<br>
+&nbsp;&nbsp;&nbsp;&nbsp;objet&nbsp;de&nbsp;configuration<br>
+&nbsp;<br>
+indexCorpusRef:&nbsp;Indexeur<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Certains&nbsp;classeurs&nbsp;ont&nbsp;besoin&nbsp;d'un&nbsp;corpus&nbsp;de&nbsp;référence<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+Classeur<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Classeur&nbsp;correspondant&nbsp;à&nbsp;la&nbsp;configuration</tt></dd></dl>
+ <dl><dt><a name="-recupererExtracteur"><strong>recupererExtracteur</strong></a>(config)</dt><dd><tt>Permet&nbsp;de&nbsp;récupérer&nbsp;l'extracteur&nbsp;correspondant&nbsp;à&nbsp;la&nbsp;configuration<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+config&nbsp;:&nbsp;Config<br>
+&nbsp;&nbsp;&nbsp;&nbsp;objet&nbsp;de&nbsp;configuration<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+Extracteur<br>
+&nbsp;&nbsp;&nbsp;&nbsp;L'extracteur&nbsp;correspondant&nbsp;à&nbsp;la&nbsp;configuration</tt></dd></dl>
+ <dl><dt><a name="-recupererIndexeurReference"><strong>recupererIndexeurReference</strong></a>(config)</dt><dd><tt>Permet&nbsp;de&nbsp;récupérer&nbsp;l'indexeur&nbsp;du&nbsp;corpus&nbsp;de&nbsp;référence&nbsp;correspondant&nbsp;à<br>
+la&nbsp;configuration.<br>
+&nbsp;<br>
+Comme&nbsp;le&nbsp;traitement&nbsp;est&nbsp;long,&nbsp;si&nbsp;l'indexeur&nbsp;a&nbsp;déjà&nbsp;été&nbsp;créé&nbsp;alors&nbsp;il&nbsp;est&nbsp;chargé,<br>
+sinon&nbsp;il&nbsp;est&nbsp;calculé&nbsp;puis&nbsp;enregistré&nbsp;pour&nbsp;les&nbsp;prochaines&nbsp;fois.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+config&nbsp;:&nbsp;Config<br>
+&nbsp;&nbsp;&nbsp;&nbsp;objet&nbsp;de&nbsp;configuration<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+Indexeur<br>
+&nbsp;&nbsp;&nbsp;&nbsp;L'indexeur&nbsp;du&nbsp;corpus&nbsp;de&nbsp;référence&nbsp;correspondant&nbsp;à&nbsp;la&nbsp;configuration</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>PATH_CORPUSREF</strong> = 'ressources/corpus_ref.fr'</td></tr></table>
+</body></html>

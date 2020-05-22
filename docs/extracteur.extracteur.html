@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module extracteur.extracteur</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="extracteur.html"><font color="#ffffff">extracteur</font></a>.extracteur</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br></font></td></tr></table>
+    <p><tt>#&nbsp;-*-&nbsp;coding:&nbsp;utf-8&nbsp;-*-</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="string.html">string</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="extracteur.extracteur.html#Extracteur">Extracteur</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Extracteur">class <strong>Extracteur</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Extracteur">Extracteur</a>(config)<br>
+&nbsp;<br>
+Objet&nbsp;permettant&nbsp;d'extraire&nbsp;des&nbsp;termes&nbsp;depuis&nbsp;un&nbsp;texte<br>
+&nbsp;<br>
+Attributes<br>
+----------<br>
+config&nbsp;:&nbsp;Config<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Objet&nbsp;qui&nbsp;contient&nbsp;tous&nbsp;les&nbsp;paramètres&nbsp;de&nbsp;la&nbsp;configuration&nbsp;de&nbsp;l'extraction.<br>
+&nbsp;<br>
+dictStemTerme&nbsp;:&nbsp;dict[tuple[str*],dict[tuple[str*],int]]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Lorsque&nbsp;stem&nbsp;est&nbsp;à&nbsp;True&nbsp;dans&nbsp;la&nbsp;config&nbsp;ce&nbsp;dictionnaire&nbsp;permet&nbsp;de<br>
+&nbsp;&nbsp;&nbsp;&nbsp;retrouver&nbsp;la&nbsp;forme&nbsp;de&nbsp;surface&nbsp;la&nbsp;plus&nbsp;fréquente&nbsp;pour&nbsp;un&nbsp;stem.<br>
+&nbsp;<br>
+stemmer&nbsp;:&nbsp;SnowballStemmer<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Objet&nbsp;permettant&nbsp;de&nbsp;faire&nbsp;du&nbsp;stemming<br>
+&nbsp;<br>
+motsVides&nbsp;:&nbsp;set[str]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Ensemble&nbsp;des&nbsp;mots&nbsp;vides<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Extracteur-__init__"><strong>__init__</strong></a>(self, config)</dt><dd><tt>Constructeur&nbsp;de&nbsp;la&nbsp;classe&nbsp;<a href="#Extracteur">Extracteur</a><br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+config&nbsp;:&nbsp;Config<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Objet&nbsp;qui&nbsp;contient&nbsp;tous&nbsp;les&nbsp;paramètres&nbsp;de&nbsp;la&nbsp;configuration&nbsp;de<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l'extraction.</tt></dd></dl>
+
+<dl><dt><a name="Extracteur-extraire"><strong>extraire</strong></a>(self, texte)</dt><dd><tt>Méthode&nbsp;d'extraction&nbsp;des&nbsp;termes&nbsp;du&nbsp;texte.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+texte&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Texte&nbsp;duquel&nbsp;on&nbsp;veut&nbsp;extraire&nbsp;les&nbsp;termes<br>
+&nbsp;<br>
+Raises<br>
+------<br>
+NotImplementedError<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Lève&nbsp;toujours&nbsp;cette&nbsp;erreur&nbsp;car&nbsp;cette&nbsp;classe&nbsp;est&nbsp;abstraite</tt></dd></dl>
+
+<dl><dt><a name="Extracteur-finaliser"><strong>finaliser</strong></a>(self, listeTermeTmp)</dt><dd><tt>Prend&nbsp;une&nbsp;liste&nbsp;de&nbsp;termes&nbsp;temporaires&nbsp;et&nbsp;rend&nbsp;une&nbsp;liste&nbsp;des&nbsp;termes&nbsp;propres<br>
+et&nbsp;conformes&nbsp;à&nbsp;la&nbsp;configuration.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+listeTermeTmp&nbsp;:&nbsp;list[tuple[str*]]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Liste&nbsp;de&nbsp;termes&nbsp;temporaires.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+list[tuple[str*]]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Liste&nbsp;de&nbsp;termes&nbsp;nettoyés&nbsp;et&nbsp;conformes&nbsp;à&nbsp;la&nbsp;configuration</tt></dd></dl>
+
+<dl><dt><a name="Extracteur-nettoyerTerme"><strong>nettoyerTerme</strong></a>(self, listeTermeTmp)</dt><dd><tt>Nettoie&nbsp;une&nbsp;liste&nbsp;de&nbsp;termes&nbsp;temporaire.<br>
+&nbsp;<br>
+On&nbsp;retire&nbsp;les&nbsp;mots&nbsp;vides,&nbsp;la&nbsp;ponctuation&nbsp;en&nbsp;début&nbsp;et&nbsp;fin&nbsp;des&nbsp;termes&nbsp;de<br>
+la&nbsp;liste&nbsp;listeTermeTmp.&nbsp;On&nbsp;tronque&nbsp;au&nbsp;niveau&nbsp;des&nbsp;parenthèses.&nbsp;On&nbsp;retire<br>
+les&nbsp;termes&nbsp;qui&nbsp;n'ont&nbsp;pas&nbsp;de&nbsp;sens&nbsp;comme&nbsp;ceux&nbsp;avec&nbsp;un&nbsp;point&nbsp;au&nbsp;milieu<br>
+ou&nbsp;ceux&nbsp;composés&nbsp;d'une&nbsp;lettre&nbsp;ou&nbsp;encore&nbsp;ceux&nbsp;qui&nbsp;ne&nbsp;sont&nbsp;que&nbsp;des&nbsp;chiffres.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+listeTermeTmp&nbsp;:&nbsp;list[tuple[str*]]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Liste&nbsp;des&nbsp;termes&nbsp;temporaires.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+list[tuple[str*]]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Liste&nbsp;des&nbsp;termes&nbsp;nettoyés</tt></dd></dl>
+
+<dl><dt><a name="Extracteur-retireTermePeuFrequent"><strong>retireTermePeuFrequent</strong></a>(self, listeTerme)</dt><dd><tt>Cette&nbsp;méthode&nbsp;renvoie&nbsp;la&nbsp;liste&nbsp;des&nbsp;termes&nbsp;donnée&nbsp;en&nbsp;paramètre,&nbsp;privée<br>
+des&nbsp;termes&nbsp;dont&nbsp;la&nbsp;fréquence&nbsp;dans&nbsp;cette&nbsp;liste&nbsp;est&nbsp;inférieure&nbsp;au&nbsp;seuil<br>
+donné&nbsp;dans&nbsp;le&nbsp;fichier&nbsp;de&nbsp;config.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+List[tuple[str*]]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Liste&nbsp;des&nbsp;termes&nbsp;dont&nbsp;la&nbsp;fréquence&nbsp;est&nbsp;supérieure&nbsp;ou&nbsp;égale&nbsp;au&nbsp;seuil<br>
+&nbsp;&nbsp;&nbsp;&nbsp;renseigné&nbsp;dans&nbsp;le&nbsp;fichier&nbsp;de&nbsp;configuration.</tt></dd></dl>
+
+<dl><dt><a name="Extracteur-segmenter"><strong>segmenter</strong></a>(self, texte)</dt><dd><tt>Sépare&nbsp;le&nbsp;texte&nbsp;en&nbsp;liste&nbsp;de&nbsp;mots.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+texte&nbsp;:&nbsp;str<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Le&nbsp;texte&nbsp;qu'on&nbsp;souhaite&nbsp;segmenter.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+list[str]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Liste&nbsp;des&nbsp;mots&nbsp;du&nbsp;texte</tt></dd></dl>
+
+<dl><dt><a name="Extracteur-stemToTerme"><strong>stemToTerme</strong></a>(self, listeStem)</dt><dd><tt>Méthode&nbsp;qui&nbsp;renvoie&nbsp;la&nbsp;liste&nbsp;des&nbsp;termes&nbsp;correspondants&nbsp;à&nbsp;la&nbsp;liste&nbsp;des<br>
+stems&nbsp;donnée&nbsp;en&nbsp;paramètre.&nbsp;Le&nbsp;terme&nbsp;qui&nbsp;correspond&nbsp;au&nbsp;stem&nbsp;est&nbsp;celui&nbsp;qui<br>
+a&nbsp;le&nbsp;plus&nbsp;fréquement&nbsp;donné&nbsp;ce&nbsp;stem.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+listeStem&nbsp;:&nbsp;List[tuple[str*]]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;liste&nbsp;de&nbsp;stems&nbsp;que&nbsp;l'on&nbsp;souhaite&nbsp;trnasformer&nbsp;en&nbsp;termes&nbsp;plus&nbsp;compréhensibles<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+List[tuple[str*]]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Liste&nbsp;de&nbsp;termes&nbsp;correspondants&nbsp;à&nbsp;la&nbsp;liste&nbsp;de&nbsp;stems&nbsp;donnée&nbsp;en&nbsp;paramètre.<br>
+&nbsp;<br>
+Raises<br>
+------<br>
+KeyError<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Si&nbsp;un&nbsp;stem&nbsp;de&nbsp;la&nbsp;liste&nbsp;n'a&nbsp;aucune&nbsp;correspondance&nbsp;avec&nbsp;un&nbsp;terme<br>
+RuntimeError<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Si&nbsp;la&nbsp;configuration&nbsp;ne&nbsp;permet&nbsp;pas&nbsp;le&nbsp;stemming&nbsp;cette&nbsp;méthode&nbsp;ne&nbsp;peut<br>
+&nbsp;&nbsp;&nbsp;&nbsp;être&nbsp;appelée'</tt></dd></dl>
+
+<dl><dt><a name="Extracteur-termeBonneLongueur"><strong>termeBonneLongueur</strong></a>(self, listeTerme)</dt><dd><tt>Retire&nbsp;les&nbsp;termes&nbsp;de&nbsp;la&nbsp;liste&nbsp;qui&nbsp;ne&nbsp;sont&nbsp;pas&nbsp;comformes&nbsp;à&nbsp;la&nbsp;taille<br>
+prévue&nbsp;par&nbsp;la&nbsp;configuration<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+listeTerme&nbsp;:&nbsp;list[tuple[str*]]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Liste&nbsp;de&nbsp;termes&nbsp;de&nbsp;n'importe&nbsp;quelles&nbsp;tailles<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+list[tuple[str*]]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Liste&nbsp;de&nbsp;termes&nbsp;de&nbsp;la&nbsp;taille&nbsp;prévue&nbsp;par&nbsp;la&nbsp;configuration</tt></dd></dl>
+
+<dl><dt><a name="Extracteur-termeToStem"><strong>termeToStem</strong></a>(self, listeTermes)</dt><dd><tt>Méthode&nbsp;qui&nbsp;renvoie&nbsp;la&nbsp;liste&nbsp;des&nbsp;stems&nbsp;correspondants&nbsp;à&nbsp;la&nbsp;liste&nbsp;des<br>
+termes&nbsp;donnée&nbsp;en&nbsp;paramètre.&nbsp;Met&nbsp;à&nbsp;jour&nbsp;le&nbsp;dictionnaire&nbsp;dictStemTerme.<br>
+Pour&nbsp;ensuite&nbsp;pouvoir&nbsp;faire&nbsp;appel&nbsp;à&nbsp;la&nbsp;méthode&nbsp;stemToTerme.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+listeTermes&nbsp;:&nbsp;List[tuple[str*]]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;liste&nbsp;de&nbsp;termes&nbsp;extraits&nbsp;du&nbsp;texte<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+List[tuple[str*]]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Liste&nbsp;de&nbsp;stems&nbsp;correspondants&nbsp;à&nbsp;la&nbsp;liste&nbsp;de&nbsp;termes&nbsp;donnés&nbsp;en&nbsp;paramètre.<br>
+&nbsp;<br>
+Raises<br>
+------<br>
+RuntimeError<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Si&nbsp;la&nbsp;configuration&nbsp;ne&nbsp;permet&nbsp;pas&nbsp;le&nbsp;stemming,&nbsp;cette&nbsp;méthode&nbsp;ne&nbsp;peut<br>
+&nbsp;&nbsp;&nbsp;&nbsp;être&nbsp;appelée</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>PATH_MOTSVIDES</strong> = 'ressources/stopwords.fr'</td></tr></table>
+</body></html>

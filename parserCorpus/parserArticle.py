@@ -6,17 +6,17 @@ from parserCorpus.parserCorpus import ParserCorpus
 
 class ParserArticle(ParserCorpus):
     """
-    Objet principalement fait pour pouvoir analyser le corpus de réference 
+    Objet principalement fait pour pouvoir analyser le corpus de réference
     (corpus_ref.fr)
     """
     def parse(self,path):
-        """Methode qui analyse un fichier .txt est renvoie un corpus
-        
+        """Méthode qui analyse un fichier .txt est renvoie un corpus
+
         Parameters
         ----------
-        path : str 
+        path : str
             Chemin du fichier à analyser
-            
+
         Raises
         ------
         FileNotFoundError
@@ -27,11 +27,11 @@ class ParserArticle(ParserCorpus):
         corpusRes = Corpus()
         with open(path, "r", encoding="utf-8") as file :
             txt = file.read()
-            
+
         regex=r'<article title=\".*?\">\n(.*?)</article>'
         contenus = re.findall(regex, txt, re.DOTALL)
-        
+
         for content in contenus:
             corpusRes.addDocument(Document(content))
-        
+
         return corpusRes

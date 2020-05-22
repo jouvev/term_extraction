@@ -4,13 +4,13 @@ class ParserCorpus:
     Objet qui permet d'analyser un fichier .txt pour fabriquer un corpus
     """
     def parse(self,path):
-        """Methode qui analyse un fichier .txt est renvoie un corpus
-        
+        """Méthode qui analyse un fichier .txt est renvoie un corpus
+
         Parameters
         ----------
-        path : str 
+        path : str
             Chemin du fichier à analyser
-            
+
         Raises
         ------
         NotImplementedError

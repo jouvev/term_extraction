@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module classeur.classeurOkapi</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="classeur.html"><font color="#ffffff">classeur</font></a>.classeurOkapi</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br></font></td></tr></table>
+    <p><tt>#&nbsp;-*-&nbsp;coding:&nbsp;utf-8&nbsp;-*-</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="classeur.classeur.html#Classeur">classeur.classeur.Classeur</a>(<a href="builtins.html#object">builtins.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="classeur.classeurOkapi.html#ClasseurOkapi">ClasseurOkapi</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ClasseurOkapi">class <strong>ClasseurOkapi</strong></a>(<a href="classeur.classeur.html#Classeur">classeur.classeur.Classeur</a>)</font></td></tr>
+
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#ClasseurOkapi">ClasseurOkapi</a>(config,&nbsp;indexCorpusRef)<br>
+&nbsp;<br>
+Cette&nbsp;classe&nbsp;attribue&nbsp;comme&nbsp;score&nbsp;aux&nbsp;termes,&nbsp;leur&nbsp;score&nbsp;okapi<br>
+d'après&nbsp;un&nbsp;corpus&nbsp;de&nbsp;référence&nbsp;et&nbsp;selon&nbsp;l'agrégation&nbsp;choisie&nbsp;dans&nbsp;la&nbsp;config.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="classeur.classeurOkapi.html#ClasseurOkapi">ClasseurOkapi</a></dd>
+<dd><a href="classeur.classeur.html#Classeur">classeur.classeur.Classeur</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="ClasseurOkapi-__init__"><strong>__init__</strong></a>(self, config, indexCorpusRef)</dt><dd><tt>Constructeur&nbsp;de&nbsp;la&nbsp;classe&nbsp;<a href="#ClasseurOkapi">ClasseurOkapi</a><br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+config&nbsp;:&nbsp;Config<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Objet&nbsp;qui&nbsp;contient&nbsp;tous&nbsp;les&nbsp;paramètres&nbsp;de&nbsp;la&nbsp;configuration&nbsp;de<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l'extraction.<br>
+&nbsp;<br>
+indexCorpusRef&nbsp;:&nbsp;Indexeur<br>
+&nbsp;&nbsp;&nbsp;&nbsp;L'index&nbsp;du&nbsp;corpus&nbsp;de&nbsp;référence&nbsp;qui&nbsp;permet&nbsp;de&nbsp;calculer&nbsp;l'idf&nbsp;pour&nbsp;okapi.</tt></dd></dl>
+
+<dl><dt><a name="ClasseurOkapi-noter"><strong>noter</strong></a>(self, indexCorpus)</dt><dd><tt>Méthode&nbsp;qui&nbsp;attribue&nbsp;un&nbsp;score&nbsp;aux&nbsp;termes.<br>
+Le&nbsp;score&nbsp;correspond&nbsp;à&nbsp;okapi&nbsp;selon&nbsp;le&nbsp;choix&nbsp;fait&nbsp;dans&nbsp;le&nbsp;fichier&nbsp;de<br>
+config,&nbsp;normalisé&nbsp;par&nbsp;document&nbsp;puis&nbsp;pris&nbsp;selon&nbsp;l'agrégation&nbsp;choisie<br>
+dans&nbsp;la&nbsp;config.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="classeur.classeur.html#Classeur">classeur.classeur.Classeur</a>:<br>
+<dl><dt><a name="ClasseurOkapi-agregerScore"><strong>agregerScore</strong></a>(self, nbdoc, indexInvScore)</dt><dd><tt>Renvoie&nbsp;un&nbsp;dictionnaire&nbsp;de&nbsp;scores&nbsp;pour&nbsp;les&nbsp;termes&nbsp;du&nbsp;dictionnaire&nbsp;passé&nbsp;en&nbsp;argument,&nbsp;<br>
+agréger&nbsp;selon&nbsp;la&nbsp;config.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+nbdoc&nbsp;:&nbsp;int&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nombre&nbsp;de&nbsp;document&nbsp;dans&nbsp;le&nbsp;corpus.&nbsp;Important&nbsp;pour&nbsp;la&nbsp;moyenne.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+indexInvScore&nbsp;:&nbsp;dict[tuple[str*],dict[int,float]]&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Score&nbsp;d'un&nbsp;terme&nbsp;dans&nbsp;les&nbsp;documents<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Returns<br>
+-------<br>
+dict[tuple[str*],float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Dictionnaire&nbsp;de&nbsp;score&nbsp;agrégé&nbsp;pour&nbsp;un&nbsp;terme</tt></dd></dl>
+
+<dl><dt><a name="ClasseurOkapi-classer"><strong>classer</strong></a>(self, indexCorpus)</dt><dd><tt>Attribue&nbsp;un&nbsp;score&nbsp;aux&nbsp;termes&nbsp;du&nbsp;corpus&nbsp;puis&nbsp;les&nbsp;trie&nbsp;en&nbsp;fonction&nbsp;du<br>
+score,&nbsp;puis&nbsp;par&nbsp;ordre&nbsp;alphabétique&nbsp;si&nbsp;égalité&nbsp;sur&nbsp;le&nbsp;score<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+indexCorpus&nbsp;:&nbsp;Indexation<br>
+&nbsp;&nbsp;&nbsp;&nbsp;L'index&nbsp;du&nbsp;corpus<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+List[tuple[tuple[str*],float]]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Liste&nbsp;triée&nbsp;par&nbsp;ordre&nbsp;décroissant&nbsp;des&nbsp;scores&nbsp;des&nbsp;termes</tt></dd></dl>
+
+<dl><dt><a name="ClasseurOkapi-normaliserScoreClassement"><strong>normaliserScoreClassement</strong></a>(self, dictTermesScores)</dt><dd><tt>Normalise&nbsp;en&nbsp;place&nbsp;le&nbsp;score&nbsp;des&nbsp;termes&nbsp;du&nbsp;dictionnaire&nbsp;passé&nbsp;en&nbsp;paramètre.<br>
+&nbsp;<br>
+Recentre&nbsp;entre&nbsp;0&nbsp;et&nbsp;1&nbsp;le&nbsp;score&nbsp;des&nbsp;termes.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+dictTermesScores&nbsp;:&nbsp;dict[tuples[str*],float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Dictionnaire&nbsp;du&nbsp;score&nbsp;pour&nbsp;un&nbsp;terme</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="classeur.classeur.html#Classeur">classeur.classeur.Classeur</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module classeur.classeurCValue</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="classeur.html"><font color="#ffffff">classeur</font></a>.classeurCValue</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br></font></td></tr></table>
+    <p><tt>#&nbsp;-*-&nbsp;coding:&nbsp;utf-8&nbsp;-*-</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="math.html">math</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="classeur.classeur.html#Classeur">classeur.classeur.Classeur</a>(<a href="builtins.html#object">builtins.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="classeur.classeurCValue.html#ClasseurCValue">ClasseurCValue</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ClasseurCValue">class <strong>ClasseurCValue</strong></a>(<a href="classeur.classeur.html#Classeur">classeur.classeur.Classeur</a>)</font></td></tr>
+
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#ClasseurCValue">ClasseurCValue</a>(config)<br>
+&nbsp;<br>
+Cette&nbsp;classe&nbsp;attribue&nbsp;comme&nbsp;score&nbsp;aux&nbsp;termes,&nbsp;leur&nbsp;cValue.&nbsp;Ici&nbsp;le<br>
+paramètre&nbsp;d'agrégation&nbsp;n'a&nbsp;pas&nbsp;d'influence.&nbsp;La&nbsp;C-value&nbsp;se&nbsp;calcule&nbsp;seulement<br>
+sur&nbsp;un&nbsp;document.&nbsp;Donc&nbsp;ici&nbsp;on&nbsp;fusionne&nbsp;les&nbsp;documents&nbsp;avant&nbsp;le&nbsp;calcul.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="classeur.classeurCValue.html#ClasseurCValue">ClasseurCValue</a></dd>
+<dd><a href="classeur.classeur.html#Classeur">classeur.classeur.Classeur</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="ClasseurCValue-__init__"><strong>__init__</strong></a>(self, config)</dt><dd><tt>Constructeur&nbsp;de&nbsp;la&nbsp;classe&nbsp;<a href="#ClasseurCValue">ClasseurCValue</a><br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+config&nbsp;:&nbsp;Config<br>
+&nbsp;&nbsp;&nbsp;&nbsp;objet&nbsp;de&nbsp;configuration&nbsp;pour&nbsp;permettre&nbsp;la&nbsp;classification&nbsp;des&nbsp;termes&nbsp;en&nbsp;fonction<br>
+&nbsp;&nbsp;&nbsp;&nbsp;de&nbsp;la&nbsp;configuration</tt></dd></dl>
+
+<dl><dt><a name="ClasseurCValue-calculTermesImbriques"><strong>calculTermesImbriques</strong></a>(self, ensTermes)</dt><dd><tt>Calcule&nbsp;des&nbsp;termes&nbsp;imbriqués&nbsp;à&nbsp;partir&nbsp;d'un&nbsp;ensemble&nbsp;de&nbsp;termes<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+dict[tuple[str*],set[tuple[str*]]]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Dictionnaire&nbsp;avec&nbsp;en&nbsp;clé&nbsp;un&nbsp;terme&nbsp;et&nbsp;en&nbsp;valeur&nbsp;tous&nbsp;les&nbsp;termes&nbsp;qui<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sont&nbsp;imbriqués&nbsp;dans&nbsp;le&nbsp;terme&nbsp;en&nbsp;clé.</tt></dd></dl>
+
+<dl><dt><a name="ClasseurCValue-noter"><strong>noter</strong></a>(self, indexCorpus)</dt><dd><tt>Méthode&nbsp;qui&nbsp;attribue&nbsp;comme&nbsp;score&nbsp;aux&nbsp;termes,&nbsp;leur&nbsp;C-value.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+indexCorpus&nbsp;:&nbsp;Indexation<br>
+&nbsp;&nbsp;&nbsp;&nbsp;L'index&nbsp;du&nbsp;corpus<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+dict[tuple[str*],float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Dictionnaire&nbsp;avec&nbsp;les&nbsp;termes&nbsp;en&nbsp;clé&nbsp;et&nbsp;les&nbsp;scores&nbsp;en&nbsp;valeur</tt></dd></dl>
+
+<dl><dt><a name="ClasseurCValue-scoreAvecCValue"><strong>scoreAvecCValue</strong></a>(self, indexCorpus, dictTermesScores)</dt><dd><tt>Calcule&nbsp;la&nbsp;moyenne&nbsp;géométrique&nbsp;avec&nbsp;le&nbsp;score&nbsp;donné&nbsp;en&nbsp;paramètre&nbsp;et<br>
+la&nbsp;C-value.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+dictTermesScores&nbsp;:&nbsp;dict[tuples[str*],float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Dictionnaire&nbsp;du&nbsp;score&nbsp;pour&nbsp;un&nbsp;terme<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+dict[tuple[str*],float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Dictionnaire&nbsp;de&nbsp;terme&nbsp;en&nbsp;clé&nbsp;et&nbsp;score&nbsp;en&nbsp;valeur</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="classeur.classeur.html#Classeur">classeur.classeur.Classeur</a>:<br>
+<dl><dt><a name="ClasseurCValue-classer"><strong>classer</strong></a>(self, indexCorpus)</dt><dd><tt>Attribue&nbsp;un&nbsp;score&nbsp;aux&nbsp;termes&nbsp;du&nbsp;corpus&nbsp;puis&nbsp;les&nbsp;trie&nbsp;en&nbsp;fonction&nbsp;du<br>
+score,&nbsp;puis&nbsp;par&nbsp;ordre&nbsp;alphabétique&nbsp;si&nbsp;égalité&nbsp;sur&nbsp;le&nbsp;score<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+indexCorpus&nbsp;:&nbsp;Indexation<br>
+&nbsp;&nbsp;&nbsp;&nbsp;L'index&nbsp;du&nbsp;corpus<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+List[tuple[tuple[str*],float]]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Liste&nbsp;triée&nbsp;par&nbsp;ordre&nbsp;décroissant&nbsp;des&nbsp;scores&nbsp;des&nbsp;termes</tt></dd></dl>
+
+<dl><dt><a name="ClasseurCValue-normaliserScoreClassement"><strong>normaliserScoreClassement</strong></a>(self, dictTermesScores)</dt><dd><tt>Normalise&nbsp;en&nbsp;place&nbsp;le&nbsp;score&nbsp;des&nbsp;termes&nbsp;du&nbsp;dictionnaire&nbsp;passé&nbsp;en&nbsp;paramètre.<br>
+&nbsp;<br>
+Recentre&nbsp;entre&nbsp;0&nbsp;et&nbsp;1&nbsp;le&nbsp;score&nbsp;des&nbsp;termes.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+dictTermesScores&nbsp;:&nbsp;dict[tuples[str*],float]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Dictionnaire&nbsp;du&nbsp;score&nbsp;pour&nbsp;un&nbsp;terme</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="classeur.classeur.html#Classeur">classeur.classeur.Classeur</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

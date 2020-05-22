@@ -3,8 +3,8 @@ from statistics import mean
 
 class Corpus:
     """
-    Objet Corpus qui stocke une collection de document.
-    
+    Objet Corpus qui stocke une collection de documents.
+
     Attributes
     ----------
     collection : dict[int,Document]
@@ -14,26 +14,26 @@ class Corpus:
     """
     def __init__(self):
         """Constructeur de la classe Document
-        
+
         Construit un corpus vide
         """
         self.collection = dict()
         self.nbMoyenMot = None #calculer lors de l'appel au getter
 
     def __iter__(self):
-        """Permet d'itérer sur les documents dans les boucles for 
+        """Permet d'itérer sur les documents dans les boucles for
         ex: for doc in corpus
         """
         return self.collection.values().__iter__()
 
     def addDocument(self,doc):
         """Ajouter un document au corpus
-        
+
         Parameters
         ----------
-        doc : Document 
+        doc : Document
             Document à ajouter au corpus
-            
+
         Raises
         ------
         KeyError
@@ -47,17 +47,17 @@ class Corpus:
 
     def getDocumentById(self, iddoc):
         """Getter de document avec l'id
-        
+
         Parameters
         ----------
         iddoc : int
             L'id du document que l'on veut récupérer
-            
+
         Returns
         -------
         Document
             Le document d'id iddoc
-            
+
         Raises
         ------
         KeyError
@@ -75,10 +75,10 @@ class Corpus:
             Le nombre de documents dans le corpus
         """
         return len(self.collection)
-    
+
     def getNbMoyenMot(self):
         """Getter de nbMoyenMot
-            
+
         Returns
         -------
         float
@@ -87,21 +87,21 @@ class Corpus:
         if(self.nbMoyenMot is None):
             self.nbMoyenMot = mean([doc.getNbMot() for doc in self])
         return self.nbMoyenMot
-    
+
     def extraction(self,extracteur):
-        """Methode faisant appel à la methode extraction de chaque document.
-        
+        """Méthode appelant la méthode extraction de chaque document.
+
         Parameters
         ----------
-        extracteur : Extracteur 
+        extracteur : Extracteur
             Objet Extracteur traitant le contenu pour extraire les termes
         """
         for doc in self:
             doc.extraction(extracteur)
-            
+
     def getCollection(self):
         """Getter de la collection de document
-            
+
         Returns
         -------
         dict[int,Document]
